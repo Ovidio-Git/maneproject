@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import {
@@ -10,32 +9,31 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { MoreHorizontal } from 'lucide-react';
 import { TableCell, TableRow } from '@/components/ui/table';
-import { SelectProduct } from '@/lib/db';
 import { deleteProduct } from './actions';
 
-export function Product({ product }: { product: SelectProduct }) {
+interface Device {
+  id: number;
+  name: string;
+  company: string;
+  model: string;
+  installdate: string;
+  ubication: string;
+  mesures: string;
+}
+export function Device({ device }: { device: Device }) {
   return (
     <TableRow>
-      <TableCell className="hidden sm:table-cell">
-        <Image
-          alt="Product image"
-          className="aspect-square rounded-md object-cover"
-          height="64"
-          src={product.imageUrl}
-          width="64"
-        />
-      </TableCell>
-      <TableCell className="font-medium">{product.name}</TableCell>
+      <TableCell className="font-medium">{device.id}</TableCell>
+      <TableCell className="font-medium">{device.name}</TableCell>
+      <TableCell className="font-medium">{device.company}</TableCell>
       <TableCell>
-        <Badge variant="outline" className="capitalize">
-          {product.status}
+        <Badge variant="outline" className="capitalize border text-red">
+          {device.model}
         </Badge>
       </TableCell>
-      <TableCell className="hidden md:table-cell">{`$${product.price}`}</TableCell>
-      <TableCell className="hidden md:table-cell">{product.stock}</TableCell>
-      <TableCell className="hidden md:table-cell">
-        {product.availableAt.toLocaleDateString("en-US")}
-      </TableCell>
+      <TableCell className="font-medium">{device.installdate}</TableCell>
+      <TableCell className="font-medium">{device.ubication}</TableCell>
+      <TableCell className="font-medium">{device.mesures}</TableCell>
       <TableCell>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -45,11 +43,11 @@ export function Product({ product }: { product: SelectProduct }) {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
-            <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuItem>Edit</DropdownMenuItem>
+            <DropdownMenuLabel>Acciones</DropdownMenuLabel>
+            <DropdownMenuItem>Editar</DropdownMenuItem>
             <DropdownMenuItem>
               <form action={deleteProduct}>
-                <button type="submit">Delete</button>
+                <button type="submit">Eliminar</button>
               </form>
             </DropdownMenuItem>
           </DropdownMenuContent>

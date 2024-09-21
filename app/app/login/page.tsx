@@ -31,7 +31,7 @@ export default function LoginPage() {
     }));
   };
 
-  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleLogin =  (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
       router.push('/');
   };

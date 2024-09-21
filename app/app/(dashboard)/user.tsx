@@ -11,8 +11,8 @@ import {
 } from '@/components/ui/dropdown-menu';
 import Link from 'next/link';
 
-export async function User() {
-  let session = await auth();
+export function User() {
+  let session =  auth();
   let user = session?.user;
 
   return (
@@ -33,25 +33,24 @@ export async function User() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuLabel>My Account</DropdownMenuLabel>
+        <DropdownMenuLabel>Mi Cuenta</DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>Settings</DropdownMenuItem>
-        <DropdownMenuItem>Support</DropdownMenuItem>
+        <DropdownMenuItem>Configuraciones</DropdownMenuItem>
+        <DropdownMenuItem>Soporte</DropdownMenuItem>
         <DropdownMenuSeparator />
         {user ? (
           <DropdownMenuItem>
             <form
-              action={async () => {
-                'use server';
-                await signOut();
+              action={ () => {
+                 signOut();
               }}
             >
-              <button type="submit">Sign Out</button>
+              <button type="submit">Cerrar session</button>
             </form>
           </DropdownMenuItem>
         ) : (
           <DropdownMenuItem>
-            <Link href="/login">Sign In</Link>
+            <Link href="/login">Iniciar session</Link>
           </DropdownMenuItem>
         )}
       </DropdownMenuContent>
