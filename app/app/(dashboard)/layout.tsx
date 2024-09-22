@@ -34,7 +34,7 @@ export default function DashboardLayout({
 }) {
   return (
     <Providers>
-      <main className="flex min-h-screen w-full flex-col bg-muted/40">
+      <main className="flex min-h-screen w-full flex-col bg-muted/40 " style={{ backgroundColor: '#ecf1f1' }}>
         <DesktopNav />
         <div className="flex flex-col sm:gap-4 sm:py-4 sm:pl-[190px]"> 
           <header className="sticky top-0 z-30 flex h-14 items-center gap-4 border-b bg-background px-4 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-6">
@@ -53,11 +53,11 @@ export default function DashboardLayout({
 
 function DesktopNav() {
   return (
-    <aside className="fixed inset-y-0 left-0 z-10 hidden w-50 flex-col border-r bg-background sm:flex"> 
+    <aside className="fixed inset-y-0 left-0 z-10 hidden w-50 flex-col border-r bg-background sm:flex mane-navbar-container-color"> 
       <nav className="flex flex-col items-center gap-4 px-4 sm:py-5">
         <Link
           href="/"
-          className="flex h-10 w-10 items-center justify-center gap-2 rounded-full bg-primary text-primary-foreground"
+          className="flex h-10 w-10 items-center justify-center gap-2 rounded-full bg-primary text-primary-foreground border-2 border-white-400 mb-6"
         >
           <PageLogo className="h-5 w-5 transition-all group-hover:scale-110" />
         </Link>
@@ -132,13 +132,6 @@ function MobileNav() {
           >
             <Users2 className="h-5 w-5" />
             Admin
-          </Link>
-          <Link
-            href="#"
-            className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
-          >
-            <Settings className="h-5 w-5" />
-            Configuraciones
           </Link>
         </nav>
       </SheetContent>

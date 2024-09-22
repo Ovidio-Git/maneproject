@@ -60,7 +60,7 @@ export default function Dashboard() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {/* Gráfica Circular */}
         <div className="bg-white shadow-lg rounded-lg p-4 border">
-          <h3 className="text-lg font-semibold mb-4">Estado Dispositivos</h3>
+          <h3 className="text-md mb-4">Estado Dispositivos</h3>
 
           <div className="mb-4">
             <span className="block text-sm font-medium text-gray-700">Activo ({deviceStatusCount.online})</span>
@@ -105,20 +105,20 @@ export default function Dashboard() {
 
         {/* Gráfica de Puntos */}
         <div className="bg-white shadow-lg rounded-lg p-4 border">
-          <h3 className="text-lg font-semibold mb-4">Temperatura por Fecha de Instalación</h3>
+          <h3 className="text-md mb-4">Temperatura por Fecha de Instalación</h3>
           <Scatter data={scatterData} />
         </div>
 
         {/* Gráfica de Área */}
         <div className="bg-white shadow-lg rounded-lg p-4 border">
-          <h3 className="text-lg font-semibold mb-4">Modelos Más Utilizados</h3>
+          <h3 className="text-md mb-4">Modelos Más Utilizados</h3>
           <Line data={areaData} />
         </div>
       </div>
 
       {/* Gráfica de Barras (1x1 grande) */}
       <div className="bg-white shadow-lg rounded-lg p-4 mt-8 border">
-        <h3 className="text-lg font-semibold mb-4">Temperatura Promedio por Empresa</h3>
+        <h3 className="text-md mb-4">Temperatura Promedio por Empresa</h3>
         <Bar data={barData} />
       </div>
     </div>

@@ -16,17 +16,18 @@ export function DeviceBody({ device }: { device: Device }) {
   return (
     <TableRow>
       <TableCell className="font-medium">{device.id}</TableCell>
-      <TableCell className="font-medium">
+      <TableCell>
+      <Badge variant="outline" className="capitalize border text-red">
         <div className="flex justify-start items-center">
-        <span className={`mr-2 inline-block w-3 h-3 rounded-full ${getStatusColor(device.status)}`}></span>
-        <span>{getStatusLabel(device.status)}</span>
+          <span className={`mr-2 inline-block w-3 h-3 rounded-full ${getStatusColor(device.status)}`}></span>
+          <span className="font-medium">{getStatusLabel(device.status)}</span>
         </div>
-
+      </Badge>
       </TableCell>
       <TableCell className="font-medium">{device.name}</TableCell>
       <TableCell className="font-medium">{device.company}</TableCell>
       <TableCell>
-        <Badge variant="outline" className="capitalize border text-red">
+        <Badge variant="outline" className="capitalize border font-medium">
           {device.model}
         </Badge>
       </TableCell>

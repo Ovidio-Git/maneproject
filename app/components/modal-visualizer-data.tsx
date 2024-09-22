@@ -154,7 +154,7 @@ export const Modal: React.FC<ModalProps> = ({ type, onClose }) => {
       <Card className="bg-white p-4 rounded-lg shadow-lg z-10 w-full max-w-lg">
         {renderContent()}
         <div className="flex justify-end mt-4 mr-4">
-          <Button onClick={onClose} className="bg-white-500 text-red-700 border border-red-600 px-4 py-2 rounded">
+          <Button onClick={onClose} className="bg-white-500 text-red-700 border border-red-600 px-4 py-2 rounded hover:bg-red-100">
             Cerrar
           </Button>
         </div>

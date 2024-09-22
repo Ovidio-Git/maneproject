@@ -90,3 +90,16 @@ input[type='search']::-moz-search-cancel-button {
 input[type='search']::-ms-clear {
   display: none;
 }
+
+body {
+  font-family: Open Sans,sans-serif;
+}
+
+.mane-navbar-container-color{
+  background-color: #0f172a;
+}
+
+.mane-navbar-item-background-color{
+  background-color: #ffffff2e;
+  color: rgb(228, 228, 228);
+}

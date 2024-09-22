@@ -20,12 +20,12 @@ export function User({username}: {username: string}) {
       <DropdownMenuTrigger asChild>
         <Button
           variant="outline"
-          className="overflow-hidden rounded-full p-4 pt-5 pb-5"
+          className="overflow-hidden rounded-full p-4 pt-5 pb-5 text-gray-400 bg-gray"
         >
           <Image
             src={user?.image ?? '/placeholder-user.jpg'}
-            width={34}
-            height={34}
+            width={28}
+            height={28}
             alt="Avatar"
             className="overflow-hidden rounded-full mr-2"
           />
@@ -36,7 +36,6 @@ export function User({username}: {username: string}) {
       <DropdownMenuContent align="center">
         <DropdownMenuLabel>Mi Cuenta</DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>Configuraciones</DropdownMenuItem>
         <DropdownMenuItem>Soporte</DropdownMenuItem>
         <DropdownMenuSeparator />
         {user ? (

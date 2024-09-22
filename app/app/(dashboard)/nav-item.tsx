@@ -27,9 +27,9 @@ export function NavItem({
         <Link
           href={href}
           className={clsx(
-            'flex h-9 w-9 items-center justify-start rounded-lg text-muted-foreground transition-colors hover:text-foreground p-4 md:h-8 md:w-40',
+            'flex h-9 w-9 items-center justify-start rounded-lg text-gray-400 transition-colors hover:text-white p-4 md:h-8 md:w-40',
             {
-              'bg-accent text-black': pathname === href
+              'mane-navbar-item-background-color': pathname === href
             }
           )}
         >
