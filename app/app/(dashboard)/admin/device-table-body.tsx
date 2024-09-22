@@ -12,7 +12,7 @@ import { TableCell, TableRow } from '@/components/ui/table';
 import { Device } from '@/types/devices';
 import { getStatusColor, getStatusLabel } from '@/utils/helpers'; 
 
-export function DeviceComponent({ device }: { device: Device }) {
+export function DeviceBody({ device }: { device: Device }) {
   return (
     <TableRow>
       <TableCell className="font-medium">{device.id}</TableCell>

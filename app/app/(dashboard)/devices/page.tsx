@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, {useState} from 'react';
 import { Button } from '@/components/ui/button';
 import {
   Tooltip,
@@ -10,7 +10,7 @@ import {
 import { devicesPartial } from '@/constants/devices'; 
 import { Device } from '@/types/devices';
 import { getStatusColor, getStatusLabel } from '@/utils/helpers'; 
-
+import { Modal } from '@/components/modal-visualizer-data';
 
 export default function AdminPage() {
   return (
@@ -25,6 +25,19 @@ export default function AdminPage() {
 }
 
 function DeviceCard({ device }: { device: Device }) {
+  const [isModalOpen, setModalOpen] = useState(false);
+  const [modalType, setModalType] = useState(''); 
+
+  const openModal = (type: string) => {
+    setModalType(type);
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+    setModalType('');
+  };
+
   return (
     <div className="bg-white shadow-lg rounded-lg p-4 flex flex-col justify-between">
 
@@ -54,20 +67,21 @@ function DeviceCard({ device }: { device: Device }) {
         </Button>
       </div>
       <div className="mt-4 flex justify-between space-x-2">
-        <Button size="sm" variant="outline" className="w-full">
+        <Button onClick={() => openModal('info')}  size="sm" variant="outline" className="w-full">
           Visualizar Información
         </Button>
       </div>
       <div className="mt-2 flex justify-between space-x-2">
-        <Button size="sm" variant="outline" className="w-full">
+        <Button onClick={() => openModal('alert')} size="sm" variant="outline" className="w-full">
           Visualizar Alertas
         </Button>
       </div>
       <div className="mt-2 flex justify-between space-x-2">
-        <Button size="sm" variant="outline" className="w-full">
+        <Button onClick={() => openModal('logs')} size="sm" variant="outline" className="w-full">
           Visualizar Logs
         </Button>
       </div>
+      {isModalOpen && <Modal type={modalType} onClose={closeModal} />}
     </div>
   );
 }

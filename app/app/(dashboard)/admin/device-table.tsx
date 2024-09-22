@@ -15,7 +15,7 @@ import {
   CardHeader,
   CardTitle
 } from '@/components/ui/card';
-import { DeviceComponent } from './device';
+import { DeviceBody } from './device-table-body';
 import { useRouter } from 'next/navigation';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -73,7 +73,7 @@ export function DevicesTable({
           </TableHeader>
           <TableBody>
             {devices.map((device:Device) => (
-              <DeviceComponent key={device.id} device={device} />
+              <DeviceBody key={device.id} device={device} />
             ))}
           </TableBody>
         </Table>

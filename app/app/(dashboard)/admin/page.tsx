@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, {useState} from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { File, PlusCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -8,6 +8,7 @@ import { Device } from '@/types/devices';
 import { DevicesTable } from './device-table';
 import { devicesTotal } from '@/constants/devices'; 
 import { SearchInput } from '../search';
+import { Modal } from '@/components/modal-add-device';
 
 export default  function AdminPage() {
   const search: string=  '';
@@ -19,12 +20,23 @@ export default  function AdminPage() {
     )
   : devicesTotal;
 
-  const itemsPerPage = 10;
+  const itemsPerPage:number = 10;
   const paginatedDevices = filteredDevices.slice(
     offset * itemsPerPage,
     (offset + 1) * itemsPerPage
   );
 
+  const [isModalOpen, setModalOpen] = useState(false);
+
+  // Función para abrir el modal
+  const openModal = () => {
+    setModalOpen(true);
+  };
+
+  // Función para cerrar el modal
+  const closeModal = () => {
+    setModalOpen(false);
+  };
 
   return (
     <Tabs defaultValue="all">
@@ -41,12 +53,13 @@ export default  function AdminPage() {
               Exportar Tabla
             </span>
           </Button>
-          <Button size="sm" className="h-8 gap-1">
+          <Button onClick={openModal} size="sm" className="h-8 gap-1">
             <PlusCircle className="h-3.5 w-3.5" />
             <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
               Agregar Dispositivo
             </span>
           </Button>
+          {isModalOpen && <Modal onClose={closeModal} />}
         </div>
       </div>
       <TabsContent value="all">
