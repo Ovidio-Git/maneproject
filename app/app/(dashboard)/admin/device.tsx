@@ -9,21 +9,20 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { MoreHorizontal } from 'lucide-react';
 import { TableCell, TableRow } from '@/components/ui/table';
-import { deleteProduct } from './actions';
+import { Device } from '@/types/devices';
+import { getStatusColor, getStatusLabel } from '@/utils/helpers'; 
 
-interface Device {
-  id: number;
-  name: string;
-  company: string;
-  model: string;
-  installdate: string;
-  ubication: string;
-  mesures: string;
-}
-export function Device({ device }: { device: Device }) {
+export function DeviceComponent({ device }: { device: Device }) {
   return (
     <TableRow>
       <TableCell className="font-medium">{device.id}</TableCell>
+      <TableCell className="font-medium">
+        <div className="flex justify-start items-center">
+        <span className={`mr-2 inline-block w-3 h-3 rounded-full ${getStatusColor(device.status)}`}></span>
+        <span>{getStatusLabel(device.status)}</span>
+        </div>
+
+      </TableCell>
       <TableCell className="font-medium">{device.name}</TableCell>
       <TableCell className="font-medium">{device.company}</TableCell>
       <TableCell>
@@ -46,7 +45,7 @@ export function Device({ device }: { device: Device }) {
             <DropdownMenuLabel>Acciones</DropdownMenuLabel>
             <DropdownMenuItem>Editar</DropdownMenuItem>
             <DropdownMenuItem>
-              <form action={deleteProduct}>
+              <form>
                 <button type="submit">Eliminar</button>
               </form>
             </DropdownMenuItem>

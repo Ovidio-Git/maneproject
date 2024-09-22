@@ -15,20 +15,11 @@ import {
   CardHeader,
   CardTitle
 } from '@/components/ui/card';
-import { Device } from './device';
+import { DeviceComponent } from './device';
 import { useRouter } from 'next/navigation';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-
-interface Device {
-  id: number;
-  name: string;
-  company: string;
-  model: string;
-  installdate: string;
-  ubication: string;
-  mesures: string;
-}
+import { Device } from '@/types/devices';
 
 export function DevicesTable({
   devices,
@@ -70,6 +61,7 @@ export function DevicesTable({
               <TableHead className="hidden w-[100px] sm:table-cell">
                 ID
               </TableHead>
+              <TableHead>Estado</TableHead>
               <TableHead>Nombre</TableHead>
               <TableHead>Empresa</TableHead>
               <TableHead>Modelo</TableHead>
@@ -80,8 +72,8 @@ export function DevicesTable({
             </TableRow>
           </TableHeader>
           <TableBody>
-            {devices.map((device) => (
-              <Device key={device.id} device={device} />
+            {devices.map((device:Device) => (
+              <DeviceComponent key={device.id} device={device} />
             ))}
           </TableBody>
         </Table>

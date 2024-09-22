@@ -11,7 +11,7 @@ import {
 } from '@/components/ui/dropdown-menu';
 import Link from 'next/link';
 
-export function User() {
+export function User({username}: {username: string}) {
   let session =  auth();
   let user = session?.user;
 
@@ -20,19 +20,20 @@ export function User() {
       <DropdownMenuTrigger asChild>
         <Button
           variant="outline"
-          size="icon"
-          className="overflow-hidden rounded-full"
+          className="overflow-hidden rounded-full p-4 pt-5 pb-5"
         >
           <Image
             src={user?.image ?? '/placeholder-user.jpg'}
-            width={36}
-            height={36}
+            width={34}
+            height={34}
             alt="Avatar"
-            className="overflow-hidden rounded-full"
+            className="overflow-hidden rounded-full mr-2"
           />
+          {username}
         </Button>
+        
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
+      <DropdownMenuContent align="center">
         <DropdownMenuLabel>Mi Cuenta</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuItem>Configuraciones</DropdownMenuItem>

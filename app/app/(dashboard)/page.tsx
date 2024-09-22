@@ -3,23 +3,17 @@
 import React from 'react';
 import { Bubble, Scatter, Line, Bar } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, CategoryScale, LinearScale, PointElement, LineElement, BarElement } from 'chart.js';
+import { devicesPartial } from '@/constants/devices'; 
+import { Device } from '@/types/devices';
 
 ChartJS.register(ArcElement, Tooltip, Legend, CategoryScale, LinearScale, PointElement, LineElement, BarElement);
 
-const devices = [
-  { id: 1, name: 'Sensor de Temperatura', company: 'General Electric', model: 'TX-100', installdate: '2023-01-10', ubication: 'Planta 1', mesures: 25 },
-  { id: 2, name: 'Cámara de Seguridad HD', company: 'Bosch', model: 'HDX-720', installdate: '2023-02-15', ubication: 'Oficina Principal', mesures: 22 },
-  { id: 3, name: 'Termostato Inteligente', company: 'Honeywell', model: 'T1000', installdate: '2022-12-20', ubication: 'Edificio B', mesures: 20 },
-  { id: 4, name: 'Control de Acceso', company: 'Schneider Electric', model: 'Acc-50', installdate: '2022-10-05', ubication: 'Entrada Principal', mesures: 28 },
-  { id: 5, name: 'Luz LED Industrial', company: 'Philips', model: 'LED-IX150', installdate: '2023-03-12', ubication: 'Almacén', mesures: 24 },
-  { id: 6, name: 'Aire Acondicionado', company: 'Carrier', model: 'CA-220', installdate: '2023-04-08', ubication: 'Oficina Principal', mesures: 18 },
-];
 
 const bubbleData = {
   datasets: [
     {
       label: 'Dispositivos',
-      data: devices.map((device) => ({
+      data: devicesPartial.map((device:Device) => ({
         x: device.installdate.split('-')[1],
         y: device.mesures,
         r: Math.random() * 20 + 5, 
@@ -51,7 +45,7 @@ const scatterData = {
   datasets: [
     {
       label: 'Temperatura por Fecha de Instalación',
-      data: devices.map((device) => ({
+      data: devicesPartial.map((device:Device) => ({
         x: device.installdate,
         y: device.mesures,
       })),
@@ -61,7 +55,7 @@ const scatterData = {
 };
 
 const areaData = {
-  labels: devices.map((device) => device.model),
+  labels: devicesPartial.map((device:Device) => device.model),
   datasets: [
     {
       label: 'Modelos más Utilizados',
