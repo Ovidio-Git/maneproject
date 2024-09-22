@@ -1,3 +1,5 @@
+import { Device } from '@/types/devices';
+
 export function getStatusColor(status: string): string {
     switch (status) {
         case 'online':
@@ -23,3 +25,18 @@ export function getStatusLabel(status: string): string {
         return 'desconocido';
     }
 };
+
+export function countDevicesByStatus(devices: Device[]): Record<string, number> {
+    const statusCount = {
+      online: 0,
+      offline: 0,
+      pending: 0,
+      unknown: 0,
+    };
+  
+    devices.forEach((device) => {
+      statusCount[device.status]++;
+    });
+  
+    return statusCount;
+  };
